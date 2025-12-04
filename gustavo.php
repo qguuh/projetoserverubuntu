@@ -13,9 +13,31 @@
     </p>
     
     <?php
-        date_default_timezone_set('America/Sao_Paulo');
-        echo "Hoje é " . date("d/m/Y") . " e agora são " . date("H:i:s");
-    ?>
+date_default_timezone_set('America/Sao_Paulo');
+$agora = date("Y-m-d H:i:s");
+?>
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Hora em tempo real:</h2>
+<div id="relogio"></div>
+
+<script>
+// Recebe a data do PHP
+let dataInicial = new Date("<?php echo $agora; ?>");
+
+// Atualiza a cada segundo
+setInterval(() => {
+    dataInicial.setSeconds(dataInicial.getSeconds() + 1);
+    document.getElementById("relogio").innerHTML =
+        dataInicial.toLocaleString("pt-BR");
+}, 1000);
+</script>
+
+</body>
+</html>
 
 
 </body>
